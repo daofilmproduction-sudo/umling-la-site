@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boutique — Umling-La</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="lacet-shape" viewBox="0 0 28 14">
+    <path d="M1,10 C1,4 8,4 8,10 C8,16 15,16 15,10 C15,4 22,4 22,10 C22,16 27,16 27,10" stroke="currentColor" fill="none" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<div class="preview-badge">Aperçu de direction — pas encore le site final</div>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <nav class="links nav-left">
+      <svg class="nav-hamburger" viewBox="0 0 24 16"><path d="M1 1.5 H23 M1 8 H23 M1 14.5 H23"/></svg>
+      <a href="index.html#synopsis">Le film</a>
+      <a href="projections.html">Projections</a>
+      <a href="boutique.html">Boutique</a>
+    </nav>
+    <a class="brand" href="index.html"><img src="img/logo-mark-poster-blue.png" alt="Umling-La — Le plus haut col du monde"></a>
+    <nav class="links nav-right">
+      <a href="presse.html">Presse</a>
+      <a class="nav-soutenir" href="soutenir.html">Nous soutenir</a>
+      <a class="nav-contact" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-head">
+  <div class="eyebrow">Bientôt disponible</div>
+  <h1>La boutique</h1>
+  <p>Des souvenirs du voyage, pensés pour prolonger le film : l'affiche, une carte postale du col, le livre de Marceau, et le book photo du tournage.</p>
+</div>
+
+<hr class="rule">
+
+<section id="produits">
+  <div class="wrap">
+    <div class="shop-grid">
+      <div class="shop-card">
+        <div class="shop-thumb shop-thumb-img"><img src="img/affiche-thumb.jpg" alt="Affiche du film Umling-La"></div>
+        <div class="shop-info">
+          <div class="name">Affiche Umling-La</div>
+          <div class="tag">Édition limitée · 40 × 60 cm</div>
+          <div class="price">50 €</div>
+          <a class="shop-link shop-buy" href="#" data-product="affiche">Acheter ↗</a>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-thumb">Carte postale</div>
+        <div class="shop-info">
+          <div class="name">Le col, en carte postale</div>
+          <div class="tag">Lot de 3</div>
+          <div class="price">10 €</div>
+          <a class="shop-link shop-buy" href="#" data-product="carte-postale">Acheter ↗</a>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-thumb shop-thumb-img"><img src="img/livre-couverture.jpg" alt="Couverture du livre Partir (se) découvrir, de Marceau Lemoine"></div>
+        <div class="shop-info">
+          <div class="name">Partir (se) découvrir</div>
+          <div class="tag">Le livre de Marceau · 4000 km à vélo, du Sud au Nord de l'Inde</div>
+          <div class="price">18 € · broché, 224 p.</div>
+          <a class="shop-link shop-buy" href="#" data-product="livre">Acheter ↗</a>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-thumb">Book photos</div>
+        <div class="shop-info">
+          <div class="name">Umling-La, le book photo</div>
+          <div class="tag">À venir</div>
+          <div class="price">120 €</div>
+          <a class="shop-link shop-buy" href="#" data-product="book-photo">Acheter ↗</a>
+        </div>
+      </div>
+    </div>
+    <form class="notify-row" id="notify-form">
+      <input type="email" placeholder="Ton email pour être prévenu·e" required>
+      <button class="btn btn-primary" type="submit">Me prévenir</button>
+    </form>
+    <div class="hint" id="notify-hint">Aperçu — les boutons "Acheter" renverront vers des liens de paiement Stripe (paiement par carte, sans compte à créer).</div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="index.html">Accueil</a>
+      <a href="presse.html">Presse</a>
+      <a href="projections.html">Projections</a>
+      <a href="soutenir.html">Nous soutenir</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="foot-row">
+      <div class="partners">
+        <span>DAO Production</span><span>Le Lokal</span><span>Histoire Bike</span><span>VAUDE</span><span>CIMALP</span><span>ACS</span>
+      </div>
+      <div class="foot-meta">© DAO Production — Umling-La<br>umlingla-lefilm.com</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('notify-form').addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('notify-hint').textContent = "Aperçu — aucun email n'a réellement été enregistré ici.";
+  });
+</script>
+
+</body>
+</html>
