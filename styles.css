@@ -34,7 +34,8 @@ img{ display:block; }
 .wrap{ max-width: 1040px; margin-inline: auto; padding-inline: max(20px, env(safe-area-inset-left, 0px)); padding-inline-end: max(20px, env(safe-area-inset-right, 0px)); }
 .eyebrow{
   font-family: "Jost", sans-serif; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-  font-size: 0.68rem; display: inline-flex; align-items:center; gap:8px; color: var(--warm);
+  font-size: 0.68rem; display: inline-flex; align-items:center; gap:8px; color: #fff;
+  background: var(--warm); padding: 6px 13px; border-radius: 3px;
 }
 .lacet{ width:18px; height:9px; stroke: currentColor; fill:none; stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
 .preview-badge{
@@ -158,7 +159,7 @@ hr.rule{ border:none; border-top:1px solid var(--line); margin-block:0; }
 
 .stats{ display:grid; grid-template-columns: repeat(4,1fr); gap: 28px; text-align:center; }
 .stat svg{ width:28px; height:28px; stroke: var(--warm); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; margin-bottom:12px; }
-.stat .num{ font-family:"UmlingTitre", serif; font-weight:500; font-size: clamp(1.5rem,3.6vw,2rem); color: var(--title); }
+.stat .num{ font-family:"Jost", sans-serif; font-weight:600; font-size: clamp(1.5rem,3.6vw,2rem); color: var(--title); }
 .stat .label{ font-family:"Jost", sans-serif; font-size:0.76rem; color: var(--ink-soft); margin-top:6px; }
 @media (max-width:640px){ .stats{ grid-template-columns: repeat(2,1fr); row-gap:36px; } }
 
@@ -182,7 +183,7 @@ hr.rule{ border:none; border-top:1px solid var(--line); margin-block:0; }
 
 .impact-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-block: 40px; }
 .impact-item{ border-top: 1px solid var(--line); padding-top:16px; }
-.impact-item .amount{ font-family:"UmlingTitre", serif; color: var(--title); font-size: clamp(1.5rem,3.6vw,2rem); }
+.impact-item .amount{ font-family:"Jost", sans-serif; font-weight:600; color: var(--title); font-size: clamp(1.5rem,3.6vw,2rem); }
 .impact-item .desc{ font-family:"Jost", sans-serif; font-size:0.85rem; color: var(--ink-soft); margin-top:6px; line-height:1.6; }
 @media (max-width:640px){ .impact-grid{ grid-template-columns: 1fr; } }
 
