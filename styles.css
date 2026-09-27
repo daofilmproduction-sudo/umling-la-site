@@ -218,32 +218,27 @@ section.bg-deep a:not(.btn){ color: var(--on-deep); }
 .hero-trace-svg{ width:100%; height:100%; display:block; }
 .hero-trace-line{
   fill:none; stroke:#fff; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray:59; stroke-dashoffset:59; animation: hero-trace-draw 2.4s ease-in-out 0.8s forwards;
+  stroke-dasharray:119; stroke-dashoffset:119; animation: hero-trace-draw 2.6s ease-in-out 0.8s forwards;
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
   vector-effect: non-scaling-stroke;
 }
 @keyframes hero-trace-draw{ to{ stroke-dashoffset:0; } }
-.hero-trace-play-arc{
-  position:absolute; left:56%; top:32%; width:0; height:0; pointer-events:auto;
-  opacity:0; animation: hero-play-arc-in 0.9s cubic-bezier(.2,.8,.3,1.25) 3.1s forwards;
+.hero-trace-play-wrap{
+  position:absolute; transform:translate(-50%,-50%); width:110px; height:110px; pointer-events:auto;
+  opacity:0; animation: hero-play-fade-in 0.6s ease 3.4s forwards;
 }
-@keyframes hero-play-arc-in{
-  0%{ opacity:0; transform: translate(6px,20px) scale(0.4); }
-  60%{ opacity:1; transform: translate(20px,2px) scale(1.1); }
-  100%{ opacity:1; transform: translate(18px,8px) scale(1); }
-}
+@keyframes hero-play-fade-in{ to{ opacity:1; } }
 .hero-trace-play{
-  position:absolute; left:0; top:0; width:52px; height:52px; margin:-26px 0 0 -6px;
-  background:transparent; border:none; padding:0; cursor:pointer;
-  animation: hero-play-pulse 2.2s ease-in-out 4s infinite;
+  position:relative; width:100%; height:100%; background:transparent; border:none; padding:0; cursor:pointer;
 }
-.hero-trace-play svg{ width:100%; height:100%; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35)); }
-@keyframes hero-play-pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.12); } }
-.hero-trace-play:hover svg circle{ fill: rgba(180,85,46,0.55); }
+.hero-trace-play-spin{ position:absolute; inset:0; width:100%; height:100%; animation: hero-play-spin 16s linear infinite; }
+@keyframes hero-play-spin{ to{ transform:rotate(360deg); } }
+.hero-trace-play-icon{ position:absolute; width:38%; height:38%; left:50%; top:50%; transform:translate(-50%,-50%); filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35)); }
+.hero-trace-play:hover .hero-trace-play-icon circle{ fill: rgba(180,85,46,0.55); }
 @media (prefers-reduced-motion: reduce){
   .hero-trace-line{ animation:none; stroke-dashoffset:0; }
-  .hero-trace-play-arc{ animation:none; opacity:1; transform:translate(18px,8px) scale(1); }
-  .hero-trace-play{ animation:none; }
+  .hero-trace-play-wrap{ animation:none; opacity:1; }
+  .hero-trace-play-spin{ animation:none; }
 }
 
 .meet-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
