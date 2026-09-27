@@ -88,12 +88,28 @@
     <div class="hero-by">Un film de François Marques · avec Marceau Lemoine</div>
     <div class="hero-badge">Prochainement au cinéma</div>
   </div>
+  <button class="hero-trailer-btn" id="heroTrailerBtn" type="button" aria-label="Voir la bande-annonce">
+    <svg class="hero-trailer-trace" id="heroTrailerTrace" viewBox="0 0 28 14" aria-hidden="true">
+      <path d="M1,10 C1,4 8,4 8,10 C8,16 15,16 15,10 C15,4 22,4 22,10 C22,16 27,16 27,10" stroke="#fff" fill="none" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="hero-trailer-circle" id="heroTrailerCircle">
+      <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="29" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M24,19 L43,30 L24,41 Z" fill="#fff"/></svg>
+    </span>
+  </button>
+</div>
+
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal-backdrop" data-video-close></div>
+  <div class="video-modal-box">
+    <button class="video-modal-close" type="button" aria-label="Fermer" data-video-close>✕</button>
+    <div class="video-modal-frame" id="videoFrame"></div>
+  </div>
 </div>
 
 <div class="action-band">
   <div class="wrap action-band-inner">
     <div class="cta-row">
-      <a class="btn btn-primary" href="#bande-annonce">Voir la bande-annonce</a>
+      <a class="btn btn-primary" href="#" id="ctaTrailerBtn">Voir la bande-annonce</a>
       <a class="btn btn-line" href="#contact">Organiser une projection</a>
     </div>
     <div class="eyebrow action-badge">Prochainement au cinéma</div>
@@ -127,24 +143,6 @@
     <div class="pull-quote">
       <p>« Le récit de deux ascensions : celle d'une montagne, et celle, plus lente, de la connaissance de soi. »</p>
       <cite>Umling-La · Synopsis</cite>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section id="bande-annonce">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">À voir</div>
-      <h2>Aperçu du film</h2>
-    </div>
-    <div class="trailer-wrap">
-      <div class="trailer-frame"><div class="play-btn">▶</div></div>
-      <div class="trailer-caption">
-        <span>Emplacement de la bande-annonce — aperçu de mise en page</span>
-        <a href="#">Regarder sur YouTube ↗</a>
-      </div>
     </div>
   </div>
 </section>
@@ -341,6 +339,37 @@
     e.preventDefault();
     document.getElementById('contact-hint').textContent = "Aperçu enregistré localement — ce message n'a pas été envoyé.";
   });
+
+  // Bande-annonce : tracé animé sur la première image, puis bouton de lecture
+  const YT_ID = ''; // à remplir avec l'identifiant de la vidéo YouTube de la bande-annonce
+  const heroTrailerBtn = document.getElementById('heroTrailerBtn');
+  if(heroTrailerBtn){
+    setTimeout(()=>{ heroTrailerBtn.classList.add('is-ready'); }, 3000);
+  }
+  const videoModal = document.getElementById('videoModal');
+  const videoFrame = document.getElementById('videoFrame');
+  function openTrailer(e){
+    if(e) e.preventDefault();
+    if(YT_ID){
+      videoFrame.innerHTML = '<iframe src="https://www.youtube.com/embed/'+YT_ID+'?autoplay=1&rel=0" title="Bande-annonce Umling-La" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    }else{
+      videoFrame.innerHTML = '<div class="video-placeholder">Bande-annonce à venir.</div>';
+    }
+    videoModal.classList.add('open');
+    videoModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTrailer(){
+    videoModal.classList.remove('open');
+    videoModal.setAttribute('aria-hidden','true');
+    videoFrame.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  if(heroTrailerBtn) heroTrailerBtn.addEventListener('click', openTrailer);
+  const ctaTrailerBtn = document.getElementById('ctaTrailerBtn');
+  if(ctaTrailerBtn) ctaTrailerBtn.addEventListener('click', openTrailer);
+  document.querySelectorAll('[data-video-close]').forEach(el=>el.addEventListener('click', closeTrailer));
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeTrailer(); });
 </script>
 
 </body>
