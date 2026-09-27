@@ -94,7 +94,7 @@ nav.links a{ font-family:"Jost", sans-serif; font-size:0.78rem; letter-spacing:0
   display:flex; flex-direction:column; align-items:center; gap:18px;
   padding-block: 28px; text-align:center;
 }
-.action-badge{ background: transparent; color: var(--deep); border: 1px solid var(--deep); }
+.action-badge{ background: transparent; border: none; padding: 0; color: var(--deep); font-size: 1.05rem; font-weight: 700; letter-spacing: 0.08em; }
 @media (max-width:640px){ .hero-overlay{ padding-bottom: clamp(40px, 11vh, 90px); } .hero-logo{ width: min(250px, 70vw); } }
 
 .stamp-row{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center; margin-bottom: 30px; font-family:"Jost", sans-serif; font-size:0.78rem; letter-spacing:0.04em; color: var(--ink-soft); }
