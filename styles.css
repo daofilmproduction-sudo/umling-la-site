@@ -13,7 +13,7 @@
   --title: #5E7896;
   --mist: #C9D5E2;
   --mist-soft: #EEF2F6;
-  --warm: #B4552E;
+  --warm: #ff6f00;
   --earth: #9C8A6C;
   --cream: #E3D9C8;
   --deep: #2F4058;
@@ -28,6 +28,7 @@
 *{box-sizing:border-box;}
 body{ background: var(--bg); color: var(--ink); font-family: "Jost", -apple-system, sans-serif; margin: 0; }
 h1,h2,h3{ font-family: "UmlingTitre", Georgia, serif; font-weight: 500; text-wrap: balance; margin: 0; }
+h1 .num-inline, h2 .num-inline, h3 .num-inline{ font-family:"Jost", sans-serif; font-weight:600; }
 p{ line-height: 1.75; margin: 0; font-size: 1.04rem; }
 a{ color: inherit; }
 img{ display:block; }
@@ -154,8 +155,27 @@ section.bg-deep a:not(.btn){ color: var(--on-deep); }
 .philo-item .desc{ font-family:"Jost", sans-serif; font-size:0.85rem; color: var(--ink-soft); margin-top:4px; }
 @media (max-width:640px){ .philo-grid{ grid-template-columns: 1fr; } }
 
-.pull-quote{ margin-top: 46px; text-align:center; max-width:640px; margin-inline:auto; }
-.pull-quote p{ font-family:"UmlingTitre", serif; font-weight:500; color: var(--title); font-size: clamp(1.3rem,3vw,1.7rem); line-height:1.45; }
+.shanti-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px; }
+.shanti-btn{
+  position:relative; flex:1 1 130px; cursor:pointer; font-family:"UmlingTitre", serif;
+  font-size:1rem; color:#fff; background: var(--warm); border:1px solid var(--warm);
+  border-radius:5px; padding:12px 10px; text-align:center; overflow:hidden; min-height:46px;
+  display:flex; align-items:center; justify-content:center;
+}
+.shanti-btn:hover, .shanti-btn:focus-visible{ background: var(--deep); border-color: var(--deep); }
+.shanti-label{ display:block; transition: opacity .15s ease; }
+.shanti-btn:hover .shanti-label, .shanti-btn:focus-visible .shanti-label{ opacity:0; }
+.shanti-tip{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  background: var(--deep); color: var(--on-deep); font-family:"Jost", sans-serif;
+  font-size:0.68rem; line-height:1.4; font-weight:400; text-align:center; padding:8px 10px;
+  opacity:0; pointer-events:none; transition: opacity .15s ease;
+}
+.shanti-btn:hover .shanti-tip, .shanti-btn:focus-visible .shanti-tip{ opacity:1; }
+@media (max-width:640px){ .shanti-row{ flex-direction:column; } }
+
+.pull-quote{ margin-top: 46px; text-align:center; max-width:780px; margin-inline:auto; }
+.pull-quote p{ font-family:"UmlingTitre", serif; font-weight:500; color: var(--title); font-size: clamp(1.15rem,2.6vw,1.6rem); line-height:1.45; }
 .pull-quote cite{ display:block; margin-top:16px; font-family:"Jost", sans-serif; font-style:normal; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--warm); }
 
 .hero-trailer-btn{
@@ -213,6 +233,38 @@ section.bg-deep a:not(.btn){ color: var(--on-deep); }
 .trace-map{ position:relative; width:100%; max-width:520px; aspect-ratio: 1260/960; }
 .trace-map svg:first-child{ display:block; width:100%; height:100%; }
 .map-link{ margin-top:14px; font-family:"Jost", sans-serif; font-size:0.8rem; color: var(--warm); text-decoration:underline; text-underline-offset:2px; }
+
+.read-more{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-family:"Jost", sans-serif; font-weight:600; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color: var(--warm); text-decoration:none; }
+.read-more svg{ width:22px; height:15px; stroke: var(--warm); stroke-width:1.8; flex-shrink:0; }
+
+#medias .section-head{ margin-bottom:0; }
+.media-carousel-wrap{ position:relative; margin-top:34px; }
+.media-carousel{
+  display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:20px;
+  padding: 4px max(20px, env(safe-area-inset-left,0px)) 10px; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.media-carousel::-webkit-scrollbar{ display:none; }
+.media-slide{
+  flex: 0 0 auto; width:min(78vw, 420px); scroll-snap-align:start; margin:0;
+}
+.media-slide img{
+  width:100%; height:300px; object-fit:cover; border-radius:4px; box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+}
+.media-slide figcaption{
+  margin-top:10px; font-family:"Jost", sans-serif; font-size:0.72rem; letter-spacing:0.04em; color: var(--on-deep-soft);
+}
+.media-arrow{
+  position:absolute; top:150px; transform:translateY(-50%); z-index:5;
+  width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,0.35);
+  background: rgba(36,51,74,0.7); color:#fff; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; backdrop-filter: blur(3px);
+}
+.media-arrow:hover{ background: var(--warm); border-color: var(--warm); }
+.media-arrow svg{ width:20px; height:20px; }
+.media-arrow-prev{ left:16px; }
+.media-arrow-next{ right:16px; }
+@media (max-width:640px){ .media-arrow{ display:none; } }
 
 .hero-trace-layer{ position:absolute; inset:0; z-index:3; pointer-events:none; }
 .hero-trace-play-wrap{
@@ -311,8 +363,9 @@ form.contact input, form.contact textarea{
 }
 form.contact textarea{ min-height:110px; resize:vertical; }
 .contact-direct{ padding-top: 4px; }
-.contact-direct h3{ font-size:1.2rem; color: var(--title); margin-bottom:10px; }
-.email-copy{ display:flex; align-items:center; gap:10px; margin-top:14px; flex-wrap:wrap; font-family:"Jost", sans-serif; font-size:0.9rem; }
+.contact-direct .eyebrow{ margin-bottom:18px; }
+.contact-direct h3{ font-size:1.4rem; color: var(--title); margin-bottom:18px; }
+.email-copy{ display:flex; align-items:center; gap:10px; margin-top:22px; flex-wrap:wrap; font-family:"Jost", sans-serif; font-size:0.9rem; }
 .email-copy button{
   font-family:"Jost", sans-serif; font-size:0.7rem; letter-spacing:0.05em; text-transform:uppercase;
   background:none; border:1px solid var(--line); border-radius:3px; padding:6px 10px; cursor:pointer; color:var(--ink-soft);
